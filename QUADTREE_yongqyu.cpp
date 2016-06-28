@@ -48,8 +48,6 @@ void QT::print_value()
     {
         if(sub[0][0]->value != 0)
         {
-            
-            
             sub[1][0]->print_value();
             sub[1][1]->print_value();
             sub[0][0]->print_value();
