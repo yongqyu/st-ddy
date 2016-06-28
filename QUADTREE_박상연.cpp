@@ -3,7 +3,7 @@
 #include<vector>
 using namespace std;
 
-class QuadTree {
+class QuadTree {		//QuadTree Class
 public:
 	char value;
 	QuadTree * child[4];
