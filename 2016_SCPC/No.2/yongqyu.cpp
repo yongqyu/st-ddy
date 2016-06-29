@@ -1,10 +1,12 @@
 #include <cstdio>
 #include <iostream>
-#include <string.h>
+#include <vector>
+#include <numeric>
 
 using namespace std;
 
 int main(int argc, char** argv) {
+    
     /* 아래 freopen 함수는 input.txt 를 read only 형식으로 연 후,
      앞으로 표준 입력(키보드) 대신 input.txt 파일로 부터 읽어오겠다는 의미의 코드입니다.
      만약 본인의 PC 에서 테스트 할 때는, 입력값을 input.txt에 저장한 후 freopen 함수를 사용하면,
@@ -25,15 +27,15 @@ int main(int argc, char** argv) {
     for(test_case = 1; test_case <= T; test_case++) {
         // 이 부분에서 알고리즘 프로그램을 작성하십시오. 기본 제공된 코드를 수정 또는 삭제하고 본인이 코드를 사용하셔도 됩니다.
         
-        int stone, jump, mine_num, ret = 0;
+        int stone, jump, mine_num, ret, i, j = 0;
         int mi = -1;
-        int *mine = NULL;
+        vector<int> mine;
         
         cin >> stone >> jump >> mine_num;
         
         if(mine_num)
         {
-            mine = new int[mine_num];
+            mine.resize(mine_num);
             
             for(int i = 0; i<mine_num; i++)
                 cin >> mine[i];
@@ -41,40 +43,42 @@ int main(int argc, char** argv) {
             mi = mine_num -1;
         }
         
-        int **value = new int*[jump];
-        for(int i = 0; i<jump; i++)
+        vector < vector<int> > value;
+        for(i = 0; i<stone+1; i++)
         {
-            value[i] = new int[stone];
-            memset(value[i], 0, sizeof(int)*(stone+1));
+            vector<int> element;
+            element.resize(jump);
+            value.push_back(element);
+        }
+
+        for(i = 0; i<jump; i++)
+        {
+            value[stone-1-i][i] = 1;
         }
         
-        for(int i = 0; i<jump; i++)
-        {
-            value[i][stone-1-i] = 1;
-        }
-        
-        for(int i = stone-1; i>=0; i--)
+        for(i = stone-1; i>=0; i--)
         {
             if(mi>=0)
                 if(i == mine[mi])
                 {
                     for(int j = 0; j<jump; j++)
-                        value[j][i] = 0;
+                        value[i][j] = 0;
+                    
                     mi--;
                     continue;
                 }
-            for(int j = 0; j<jump; j++)
-                for(int k = 1; k<jump; k++)
-                    if(i+j<=stone)
-                        value[j][i] += value[(j+k)%jump][i+j+1];
+            for(j = 0; j<jump; j++)
+                if(stone-1-j == i)
+                    continue;
+                else if(i+j+1<=stone)
+                    value[i][j] = accumulate(value[i+j+1].begin(), value[i+j+1].end(), 0) - value[i+j+1][j];
         }
+        
+        ret = accumulate(value[0].begin(), value[0].end(), 0)%1000000009;
         
         // 이 부분에서 정답을 출력하십시오. Codeground 시스템에서는 C++에서도 printf 사용을 권장하며, cout을 사용하셔도 됩니다.
         printf("Case #%d\n", test_case);
-        
-        for(int i = 0; i<jump; i++)
-            ret += value[i][0];
-        ret = ret%1000000009;
+
         printf("%d\n", ret);
         
     }
