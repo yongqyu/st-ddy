@@ -33,52 +33,57 @@ int main(int argc, char** argv) {
         ull zero = 0;
         vector<ull> mine;
         
-        cin >> stone >> jump >> mine_num;
+        cin >> stone >> jump >> mine_num;   //돌 갯수 >> 점프 칸 수 >> 지뢰 갯수
         
-        if(mine_num)
+        if(mine_num)    //지뢰가 있다면
         {
             mine.resize(mine_num);
             
             for(i = 0; i<mine_num; i++)
-                cin >> mine[i];
+                cin >> mine[i];         //mine에 넣어주기
             
-            mi = mine_num -1;
+            mi = mine_num -1;           //mi 는 mine index라서 -1
         }
         
         vector < vector<ull> > value;
-        for(i = 0; i<stone+1; i++)
+        for(i = 0; i<stone+1; i++)      //value는 dp저장소. 동적할당으로 생성
         {
             vector<ull> element;
             element.resize(jump);
             value.push_back(element);
         }
 
-        for(i = 0; i<jump; i++)
-        {
+        for(i = 0; i<jump; i++)         //적군 맨 앞에서부터 한칸 떨어진곳은 한칸가는곳이 1
+        {                               //두칸 떨어진곳은 두칸 가는곳이 1.... 처리
             value[stone-1-i][i] = 1;
         }
         
-        for(i = stone-1; i>=0; i--)
+        for(i = stone; i>=0; i--)
         {
-            if(mi>=0)
-                if(i == mine[mi])
+            if(mi>=0)                   //지뢰가 아직 남아있다면
+                if(i == mine[mi])       //지금 지뢰 칸이라면
                 {
-                    value[i].assign(jump, 0);
+                    value[i].assign(jump, 0);   //그 돌에서 갈 수 있는 방법은 0개로
                     
-                    mi--;
+                    mi--;               //갯수하나 줄이기
                     continue;
                 }
-            for(j = 0; j<jump; j++)
-                if(stone-1-j == i)
+            for(j = 0; j<jump; j++)     //1칸점프 부터
+                if(stone-1-j == i)      //아까 한칸앞은 한칸점프 1, 두칸앞은 두칸점프 1... 처리 한곳이면 넘어가
                     continue;
-                else if(i+j+1<=stone)
+                else if(i+j+1<=stone)   //아니면 배열범위 안넘어가는 선에서
                 {
                     value[i][j] = accumulate(value[i+j+1].begin(), value[i+j+1].end(), zero) - value[i+j+1][j];
                     zero = 0;
-                }
+                }   //한칸 점프는 한칸앞에서 한칸 점프 빼고 다 더한 값, 두칸 점프는 두칸 앞에서 두칸 점프 빼고 다 더한 값...
+        }
+        for(i = 0; i<stone+1; i++)      //이건 제출할때 지워야하는데 그냥 배열 출력해보는 테스트기
+        {    for(j =0; j<jump; j++)
+            cout << value[i][j] << " ";
+            cout <<endl;
         }
         
-        ret = accumulate(value[0].begin(), value[0].end(), zero) % 1000000009;
+        ret = accumulate(value[0].begin(), value[0].end(), zero) % 1000000009;  //결과값은 0번 땅의 모든 점프값의 합
         
         // 이 부분에서 정답을 출력하십시오. Codeground 시스템에서는 C++에서도 printf 사용을 권장하며, cout을 사용하셔도 됩니다.
         printf("Case #%d\n", test_case);
