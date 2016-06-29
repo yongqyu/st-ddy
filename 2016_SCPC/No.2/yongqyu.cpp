@@ -29,7 +29,9 @@ int main(int argc, char** argv) {
         
         int stone, jump, mine_num, ret, i, j = 0;
         int mi = -1;
-        vector<int> mine;
+        typedef unsigned long long ull;
+        ull zero = 0;
+        vector<ull> mine;
         
         cin >> stone >> jump >> mine_num;
         
@@ -37,16 +39,16 @@ int main(int argc, char** argv) {
         {
             mine.resize(mine_num);
             
-            for(int i = 0; i<mine_num; i++)
+            for(i = 0; i<mine_num; i++)
                 cin >> mine[i];
             
             mi = mine_num -1;
         }
         
-        vector < vector<int> > value;
+        vector < vector<ull> > value;
         for(i = 0; i<stone+1; i++)
         {
-            vector<int> element;
+            vector<ull> element;
             element.resize(jump);
             value.push_back(element);
         }
@@ -61,8 +63,7 @@ int main(int argc, char** argv) {
             if(mi>=0)
                 if(i == mine[mi])
                 {
-                    for(int j = 0; j<jump; j++)
-                        value[i][j] = 0;
+                    value[i].assign(jump, 0);
                     
                     mi--;
                     continue;
@@ -71,10 +72,13 @@ int main(int argc, char** argv) {
                 if(stone-1-j == i)
                     continue;
                 else if(i+j+1<=stone)
-                    value[i][j] = accumulate(value[i+j+1].begin(), value[i+j+1].end(), 0) - value[i+j+1][j];
+                {
+                    value[i][j] = accumulate(value[i+j+1].begin(), value[i+j+1].end(), zero) - value[i+j+1][j];
+                    zero = 0;
+                }
         }
         
-        ret = accumulate(value[0].begin(), value[0].end(), 0)%1000000009;
+        ret = accumulate(value[0].begin(), value[0].end(), zero) % 1000000009;
         
         // 이 부분에서 정답을 출력하십시오. Codeground 시스템에서는 C++에서도 printf 사용을 권장하며, cout을 사용하셔도 됩니다.
         printf("Case #%d\n", test_case);
