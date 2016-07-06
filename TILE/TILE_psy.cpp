@@ -32,7 +32,7 @@ int main(){
 }
 
 void fill(int start_y, int start_x, int hall_y, int hall_x,int size){
-		if (hall_y<start_y+size/2&&hall_x<start_x+size/2){			//¿ÞÂÊ»ó´Ü
+		if (hall_y<start_y+size/2&&hall_x<start_x+size/2){			//ì™¼ìª½ìƒë‹¨
 			arr[start_y + size / 2 - 1][start_x + size / 2] = 1;
 			arr[start_y + size / 2][start_x + size / 2] = 1;
 			arr[start_y + size / 2][start_x + size / 2 - 1] = 1;
@@ -43,7 +43,7 @@ void fill(int start_y, int start_x, int hall_y, int hall_x,int size){
 				fill(start_y + size / 2, start_x, start_y + size / 2, start_x + size / 2 - 1, size / 2);
 			}
 		}
-		else if (hall_y<start_y+size/2&&hall_x>=start_x+size/2){		//¿À¸¥ÂÊ»ó´Ü
+		else if (hall_y<start_y+size/2&&hall_x>=start_x+size/2){		//ì˜¤ë¥¸ìª½ìƒë‹¨
 			arr[start_y + size / 2-1][start_x + size / 2-1] = 2;
 			arr[start_y + size / 2][start_x + size / 2-1] = 2;
 			arr[start_y + size / 2][start_x + size / 2] = 2;
@@ -54,7 +54,7 @@ void fill(int start_y, int start_x, int hall_y, int hall_x,int size){
 				fill(start_y + size / 2, start_x + size / 2, start_y + size / 2, start_x + size / 2, size / 2);
 			}
 		}
-		else if (hall_y>=start_y + size / 2 && hall_x < start_x + size / 2){		//¿ÞÂÊÇÏ´Ü
+		else if (hall_y>=start_y + size / 2 && hall_x < start_x + size / 2){		//ì™¼ìª½í•˜ë‹¨
 			arr[start_y + size / 2-1][start_x + size / 2-1] = 3;
 			arr[start_y + size / 2-1][start_x + size / 2] = 3;
 			arr[start_y + size / 2][start_x + size / 2] = 3;
@@ -65,7 +65,7 @@ void fill(int start_y, int start_x, int hall_y, int hall_x,int size){
 				fill(start_y + size / 2, start_x + size / 2, start_y + size / 2, start_x + size / 2, size / 2);
 			}
 		}
-		else if (hall_y>=start_y + size / 2 && hall_x >= start_x + size / 2){					//¿À¸¥ÂÊÇÏ´Ü
+		else if (hall_y>=start_y + size / 2 && hall_x >= start_x + size / 2){					//ì˜¤ë¥¸ìª½í•˜ë‹¨
 			arr[start_y + size / 2][start_x + size / 2-1] = 4;
 			arr[start_y + size / 2-1][start_x + size / 2-1] = 4;
 			arr[start_y + size / 2-1][start_x + size / 2] = 4;
