@@ -7,7 +7,7 @@ void fillTheTile(int * map, int initN, int N, int sewerX, int sewerY){
         int side = 0;
         side = (N/2 <= sewerX) ? 3 : 1;
         side = (N/2 <= sewerY) ? side+1 : side;
-        // ÇÏ¼ö±¸°¡ ¸î»çºÐ¸é¿¡ ÀÖ´ÂÁö ±¸ÇÔ
+        // í•˜ìˆ˜êµ¬ê°€ ëª‡ì‚¬ë¶„ë©´ì— ìžˆëŠ”ì§€ êµ¬í•¨
 
         int * centerOfMap = map + (initN * (N/2) + N/2);
         int * nextMap;
