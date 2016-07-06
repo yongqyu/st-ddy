@@ -1,9 +1,9 @@
-//2016.07.06 º¸µå°ÔÀÓ http://www.jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=1142&sca=30a0
+//2016.07.06 ë³´ë“œê²Œì„ http://www.jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=1142&sca=30a0
 #include<iostream>
 #include<vector>
 using namespace std;
 typedef vector<pair<char, int> > adjEdge; 
-//GNU gcc/g++ ÄÄÆÄÀÏ·¯¿¡¼­ , int>> Ã³·³ >> ºÙ¿©¾²¸é ÄÄÆÄÀÏ ¿¡·¯ ¶ä. char, int> > adjEdge·Î ¶ç¾î¾²±â ³Ö¾îÁà¾ß ÇÔ
+//GNU gcc/g++ ì»´íŒŒì¼ëŸ¬ì—ì„œ , int>> ì²˜ëŸ¼ >> ë¶™ì—¬ì“°ë©´ ì»´íŒŒì¼ ì—ëŸ¬ ëœ¸. char, int> > adjEdgeë¡œ ë„ì–´ì“°ê¸° ë„£ì–´ì¤˜ì•¼ í•¨
 
 int main() {
 	int n, m, k, i, j;
