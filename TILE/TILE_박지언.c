@@ -1,4 +1,4 @@
-//2016.07.06 Ÿ�� ä��� http://www.jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=1804&sca=3060
+//2016.07.06 Å¸ÀÏ Ã¤¿ì±â http://www.jungol.co.kr/bbs/board.php?bo_table=pbank&wr_id=1804&sca=3060
 #include<stdio.h>
 
 int A[512][512];
