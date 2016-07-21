@@ -27,7 +27,7 @@ int impossible=0;	// can't start
 // find each village's possible path
 void find() {
 	for (int i = 1; i <= n; i++) { // i = village
-		// Ž��
+		// Å½»ö
 		for (int j = 0; j < r; j++) { // j = road
 			int v = -1;
 			if (R[j].v1 == i) v = R[j].v2;
@@ -53,8 +53,6 @@ void board() {
 		}
 		else {
 			for (int j = 1; j <= v; j++) {	// j = number of village
-
-
 				vector<pair<int, char> >::iterator iter;
 				for (iter = village[j].pr.begin(); iter != village[j].pr.end(); iter++) {
 					//int s = score;
@@ -63,9 +61,7 @@ void board() {
 					}
 					dp[j][i] = (dp[j][i] >= dp[iter->first][i - 1]) ? dp[j][i] : dp[iter->first][i - 1];
 				}
-
 			}
-
 		}
 	}
 
