@@ -1,7 +1,7 @@
 /*
 Date: 2016.08.26
 Author: Park Jiun
-Probloem: 2015 SCPC 1Â÷ ¿¹¼± - ¹æ¼ÓÀÇ °Å¿ï
+Probloem: 2015 SCPC 1ì°¨ ì˜ˆì„  - ë°©ì†ì˜ ê±°ìš¸
 */
 
 #include<cstdio>
