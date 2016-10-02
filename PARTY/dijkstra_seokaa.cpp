@@ -38,19 +38,18 @@ int dijkstra(int from, int to) {
 	{
 		int position = pq.top().second;
 		int cost = -pq.top().first;
+		pq.pop();
 
 		if(position == to) return dist[to];
 
 		for (int i = 0; i < adj[position].size(); i++) {
 			int next_position = adj[position][i].first;
 			int next_cost = cost + adj[position][i].second;
-
 			if ( next_cost < dist[next_position] ) {
 				dist[next_position] = next_cost;
 				pq.push(make_pair(-next_cost, next_position));
 			}
 		}
-		pq.pop();
 	}
 }
 
