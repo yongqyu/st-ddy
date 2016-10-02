@@ -1,9 +1,7 @@
 // https://www.acmicpc.net/problem/1238
-// Âü°í ÇØ¼³ : http://hanstemcell.tistory.com/entry/2-%EB%B0%B1%EC%A4%80%ED%8C%8C%ED%8B%B0%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%ED%81%90%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
-// ´ÙÀ½³ëµå ¼±Á¤½Ã ÃÖ¼Ò°ª ¼±Á¤ - priority_queue »ç¿ë(maxheap)
-// adjacency node Á¤º¸ ÀúÀåÀ§ÇØ - Vector »ç¿ë
-
-#pragma warning(disable : 4996)
+// ì°¸ê³  í•´ì„¤ : http://hanstemcell.tistory.com/entry/2-%EB%B0%B1%EC%A4%80%ED%8C%8C%ED%8B%B0%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84-%ED%81%90%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98
+// ë‹¤ìŒë…¸ë“œ ì„ ì •ì‹œ ìµœì†Œê°’ ì„ ì • - priority_queue ì‚¬ìš©(maxheap)
+// adjacency node ì •ë³´ ì €ì¥ìœ„í•´ - Vector ì‚¬ìš©
 
 #include<iostream>
 #include<queue>
@@ -57,9 +55,6 @@ int dijkstra(int from, int to) {
 }
 
 int main() {
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-	ios::sync_with_stdio(false);
 	
 	input();
 
